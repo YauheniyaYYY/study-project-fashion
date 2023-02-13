@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link type="text/css" href="{% static 'trends/css/style.css' %}" rel="stylesheet" />
+    <title>{{title}}</title>
+</head>
+<body>
+{% block main-menu %}
+<header class="p-3 text-bg-dark">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+
+        </a>
+
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="#" class="nav-link px-2 text-secondary">Главная</a></li>
+          <li><a href="#" class="nav-link px-2 text-white">О нас</a></li>
+          <li><a href="#" class="nav-link px-2 text-white">Добавить статью</a></li>
+          <li><a href="#" class="nav-link px-2 text-white">Обратный отзыв</a></li>
+          <br>
+
+        </ul>
+
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+          <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Поиск..." aria-label="Search">
+        </form>
+          <br>
+
+        <div class="text-end">
+          <button type="button" class="btn btn-outline-light me-2">Войти</button>
+          <button type="button" class="btn btn-warning">Зарегистрироваться</button>
+        </div>
+      </div>
+    </div>
+  </header>
+ {% endblock %}
+</body>
+
+{% block content %}
+<header class="p-3 text-bg-dark">
+  <div class="container">
+    <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+    </ul>
+  </div>
+</header>
+  {% endblock %}
+
+
+</html>
