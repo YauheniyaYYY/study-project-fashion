@@ -1,53 +1,60 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="ru">
+<html>
 <head>
-  <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link type="text/css" href="{% static 'trends/css/style.css' %}" rel="stylesheet" />
-    <title>{{title}}</title>
+	<title>{{title}}</title>
+	<link type="text/css" href="{% static 'women/css/styles.css' %}" rel="stylesheet" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel="shortcut icon" href="{% static 'women/images/main.ico' %}" type="image/x-icon"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-{% block main-menu %}
-<header class="p-3 text-bg-dark">
-    <div class="container">
-      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+<table class="table-page" border=0 cellpadding="0" cellspacing="0">
+<tr><td valign=top>
+{% block mainmenu %}
+		<div class="header">
+			<ul id="mainmenu" class="mainmenu">
+			<li class="logo"><a href="#"><div class="logo"></div></a></li>
+{% for m in menu %}
+	{% if not forloop.last %}
+			<li><a href="#">{{m.title}}</a></li>
+	{% else %}
+			<li class="last"><a href="#">{{m.title}}</a></li>
+	{% endif %}
+{% endfor %}
+			</ul>
+			<div class="clear"></div>
+		</div>
+{% endblock mainmenu %}
 
-        </a>
 
-        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="#" class="nav-link px-2 text-secondary">Главная</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">О нас</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">Добавить статью</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">Обратный отзыв</a></li>
-          <br>
+<table class="table-content" border=0 cellpadding="0" cellspacing="0">
+<tr>
+<!-- Sidebar слева -->
+	<td valign="top" class="left-chapters">
+	<ul id="leftchapters">
 
-        </ul>
+        <li class="selected">Все категории</li>
+        <li> <a href="#">Мода</a> </li>
+        <li> <a href="#">Лицо</a> </li>
+        <li> <a href="#">Волосы</a> </li>
+        <li> <a href="#">Маникюр</a> </li>
+      </ul>
+    </td>
+<!-- Конец Sidebar'а -->
+<td valign="top" class="content">
+	<!-- Хлебные крошки -->
+	{% block breadcrumbs %}
+	{% endblock %}
 
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-          <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Поиск..." aria-label="Search">
-        </form>
-          <br>
-
-        <div class="text-end">
-          <button type="button" class="btn btn-outline-light me-2">Войти</button>
-          <button type="button" class="btn btn-warning">Зарегистрироваться</button>
-        </div>
-      </div>
-    </div>
-  </header>
- {% endblock %}
-</body>
-
+<!-- Блок контента -->
+	<div class="content-text">
 {% block content %}
-<header class="p-3 text-bg-dark">
-  <div class="container">
-    <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-    </ul>
-  </div>
-</header>
-  {% endblock %}
-
-
+{% endblock %}
+	</div>
+<!-- Конец блока контента -->
+</td></tr></table>
+</td></tr>
+</table>
+</body>
 </html>
