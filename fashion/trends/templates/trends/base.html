@@ -12,14 +12,22 @@
 <table class="table-page" border=0 cellpadding="0" cellspacing="0">
 <tr><td valign=top>
 {% block mainmenu %}
+	<div class="text-end">
+          <button type="button" class="btn btn-outline-light me-2">Войти</button>
+          <button type="button" class="btn btn-warning">Зарегистрироваться</button>
+		<br><hr>
+		 <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+          <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Поиск..." aria-label="Search">
+        </form>
+        </div>
 		<div class="header">
 			<ul id="mainmenu" class="mainmenu">
-			<li class="logo"><a href="#"><div class="logo"></div></a></li>
+			<li class="logo"><a href="{% url 'home'%}"><div class="logo"></div></a></li>
 {% for m in menu %}
 	{% if not forloop.last %}
-			<li><a href="#">{{m.title}}</a></li>
+			<li><a href="{% url m.url_name %}">{{m.title}}</a></li>
 	{% else %}
-			<li class="last"><a href="#">{{m.title}}</a></li>
+			<li class="last"><a href="{% url m.url_name %}">{{m.title}}</a></li>
 	{% endif %}
 {% endfor %}
 			</ul>

@@ -2,14 +2,22 @@ from django.http import HttpResponse, HttpResponseNotFound, Http404
 from django.shortcuts import render, redirect
 from .models import *
 
-menu = ["О сайте", "Добавить статью", "Обратная связь", "Войти"]
+menu = [{ "title": "О нас", 'url_name': 'about'},
+        { "title": "Добавить статью", 'url_name': 'add_page'},
+        {"title": "Обратная связь", 'url_name': 'contact'} ]
 def index(request):
     posts = Trends.objects.all()
     return render(request, 'trends/index.html', {'posts': posts, 'menu': menu, 'title': 'Главная страница'})
 
 def about(request):
     return render(request, 'trends/about.html',{'menu': menu, 'title': 'О сайте'})
+def addpage(request):
+    return HttpResponse("Добавить статью")
+def contact(request):
+    return HttpResponse("Обратная связь")
 
+def showpost(request):
+    return HttpResponse(f"Отображение статьи c id={post_id}")
 def categ(request, categ):
     if request.POST:
         print(request.POST)
