@@ -10,7 +10,7 @@
         <h2>{{p.title}}</h2>
         <p>{{p.content|linebreaks|truncatewords:50}}</p>
         <div class="clear"></div>
-        <p class="link-read-post"><a href="#">Читать пост</a></p>
+        <p class="link-read-post"><a href="{{ p.get_absolute_urls }}">Читать пост</a></p>
     </li>
     {%endfor%}
 </ul>

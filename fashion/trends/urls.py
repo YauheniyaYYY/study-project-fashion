@@ -10,6 +10,6 @@ urlpatterns = [
     path('contact/', contact, name='contact'),
     path('post/<int:post_id>/', showpost, name='post'),
 
-
 ]
+
 

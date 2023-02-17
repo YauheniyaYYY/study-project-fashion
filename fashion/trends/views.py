@@ -16,7 +16,7 @@ def addpage(request):
 def contact(request):
     return HttpResponse("Обратная связь")
 
-def showpost(request):
+def showpost(request, post_id):
     return HttpResponse(f"Отображение статьи c id={post_id}")
 def categ(request, categ):
     if request.POST:
