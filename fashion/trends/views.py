@@ -7,7 +7,16 @@ menu = [{ "title": "О нас", 'url_name': 'about'},
         {"title": "Обратная связь", 'url_name': 'contact'} ]
 def index(request):
     posts = Trends.objects.all()
-    return render(request, 'trends/index.html', {'posts': posts, 'menu': menu, 'title': 'Главная страница'})
+    cats = Category.objects.all()
+    context={
+        'posts': posts,
+        'cats': cats,
+        'menu': menu,
+        'title': 'Главная страница',
+        'cat_selected': 0,
+
+    }
+    return render(request, 'trends/index.html',context=context)
 
 def about(request):
     return render(request, 'trends/about.html',{'menu': menu, 'title': 'О сайте'})
@@ -18,10 +27,11 @@ def contact(request):
 
 def showpost(request, post_id):
     return HttpResponse(f"Отображение статьи c id={post_id}")
-def categ(request, categ):
-    if request.POST:
-        print(request.POST)
-    return HttpResponse(f'<h1>Cписок статей</h1><p>{categ}</p>')
+def show_category(request, cat_id):
+    posts = Trends.objects.filter(cat_id=cat_id)
+    cats = Category.objects.all()
+def show_category(request, cat_id):
+    return HttpResponse(f"Отображение статьи c id={cat_id}")
 
 def archive(request, year):
     if int(year) > 2023:
