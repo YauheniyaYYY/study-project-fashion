@@ -1,5 +1,5 @@
 from django.http import HttpResponse, HttpResponseNotFound, Http404
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
 
 menu = [{ "title": "О нас", 'url_name': 'about'},
@@ -26,7 +26,15 @@ def contact(request):
     return HttpResponse("Обратная связь")
 
 def showpost(request, post_id):
-    return HttpResponse(f"Отображение статьи c id={post_id}")
+    post = get_object_or_404(Trends, pk = post_id)
+
+    context = {
+        'post': post,
+        'menu': menu,
+        'title': post.title,
+        'cat_selected': post.cat_id,
+    }
+    return render(request, 'trends/post.html', context=context)
 def show_category(request, cat_id):
     posts = Trends.objects.filter(cat_id=cat_id)
     cats = Category.objects.all()
