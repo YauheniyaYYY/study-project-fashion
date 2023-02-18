@@ -21,12 +21,12 @@ def index(request):
 def about(request):
     return render(request, 'trends/about.html',{'menu': menu, 'title': 'О сайте'})
 def addpage(request):
-    return HttpResponse("Добавить статью")
+    return render(request,'trends/addpage.html',{"menu": menu, 'title':"Добавить статью"})
 def contact(request):
     return HttpResponse("Обратная связь")
 
-def showpost(request, post_id):
-    post = get_object_or_404(Trends, pk = post_id)
+def showpost(request, post_slug):
+    post = get_object_or_404(Trends, slug = post_slug)
 
     context = {
         'post': post,
